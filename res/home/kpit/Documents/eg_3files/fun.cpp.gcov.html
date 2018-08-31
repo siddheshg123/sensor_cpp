@@ -1,0 +1,212 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - /home/kpit/Documents/eg_3files/fun.cpp</title>
+  <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../index.html">top level</a> - <a href="index.html">home/kpit/Documents/eg_3files</a> - fun.cpp<span style="font-size: 80%;"> (source / <a href="fun.cpp.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">83</td>
+            <td class="headerCovTableEntry">86</td>
+            <td class="headerCovTableEntryHi">96.5 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2018-08-22 05:22:44</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">13</td>
+            <td class="headerCovTableEntry">14</td>
+            <td class="headerCovTableEntryHi">92.9 %</td>
+          </tr>
+          <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : #include &quot;fun.h&quot;</a>
+<span class="lineNum">       2 </span>            : 
+<span class="lineNum">       3 </span><span class="lineNoCov">          0 : void display(vector&lt;double&gt; v) {</span>
+<span class="lineNum">       4 </span>            :   /**Display function of sensor class*/
+<span class="lineNum">       5 </span><span class="lineNoCov">          0 :   for (auto i : v) cout &lt;&lt; i &lt;&lt; endl;</span>
+<a name="6"><span class="lineNum">       6 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">       7 </span>            : 
+<span class="lineNum">       8 </span><span class="lineCov">          1 : vector&lt;sensor*&gt; gyro(json j_com) {</span>
+<span class="lineNum">       9 </span>            :   /**Extracting GYROMETER parameters*/
+<span class="lineNum">      10 </span><span class="lineCov">          1 :   vector&lt;sensor*&gt; myvector_gyro;</span>
+<span class="lineNum">      11 </span><span class="lineCov">        838 :   for (auto entry : j_com) {</span>
+<span class="lineNum">      12 </span><span class="lineCov">       1674 :     sensor* gyro = new rpy(entry.value(&quot;GYROSCOPE X (rad/s)&quot;, 0.0l),</span>
+<span class="lineNum">      13 </span><span class="lineCov">       1674 :                            entry.value(&quot;GYROSCOPE Y (rad/s)&quot;, 0.0l),</span>
+<span class="lineNum">      14 </span><span class="lineCov">        837 :                            entry.value(&quot;GYROSCOPE Z (rad/s)&quot;, 0.0l));</span>
+<span class="lineNum">      15 </span><span class="lineCov">        837 :     myvector_gyro.push_back(gyro);</span>
+<span class="lineNum">      16 </span>            :   }
+<span class="lineNum">      17 </span><span class="lineCov">          1 :   return myvector_gyro;</span>
+<a name="18"><span class="lineNum">      18 </span>            : }</a>
+<span class="lineNum">      19 </span>            : 
+<span class="lineNum">      20 </span><span class="lineCov">          1 : vector&lt;sensor*&gt; accele(json j_com) {</span>
+<span class="lineNum">      21 </span>            :   /**Extracting ACCELEROMETER parameters*/
+<span class="lineNum">      22 </span><span class="lineCov">          1 :   vector&lt;sensor*&gt; myvector_acc;</span>
+<span class="lineNum">      23 </span><span class="lineCov">        838 :   for (auto entry : j_com) {</span>
+<span class="lineNum">      24 </span><span class="lineCov">       1674 :     sensor* acc = new rpy(entry.value(&quot;ACCELEROMETER X (m/s²)&quot;, 0.0l),</span>
+<span class="lineNum">      25 </span><span class="lineCov">       1674 :                           entry.value(&quot;ACCELEROMETER Y (m/s²)&quot;, 0.0l),</span>
+<span class="lineNum">      26 </span><span class="lineCov">        837 :                           entry.value(&quot;ACCELEROMETER Z (m/s²)&quot;, 0.0l));</span>
+<span class="lineNum">      27 </span><span class="lineCov">        837 :     myvector_acc.push_back(acc);</span>
+<span class="lineNum">      28 </span>            :   }
+<span class="lineNum">      29 </span><span class="lineCov">          1 :   return myvector_acc;</span>
+<a name="30"><span class="lineNum">      30 </span>            : }</a>
+<span class="lineNum">      31 </span>            : 
+<span class="lineNum">      32 </span><span class="lineCov">          1 : vector&lt;sensor*&gt; mag(json j_com) {</span>
+<span class="lineNum">      33 </span>            :   /**Extracting MAGNETOMETER parameters*/
+<span class="lineNum">      34 </span><span class="lineCov">          1 :   vector&lt;sensor*&gt; myvector_mag;</span>
+<span class="lineNum">      35 </span><span class="lineCov">        838 :   for (auto entry : j_com) {</span>
+<span class="lineNum">      36 </span><span class="lineCov">       1674 :     sensor* mag = new rpy(entry.value(&quot;MAGNETIC FIELD X (μT)&quot;, 0.0l),</span>
+<span class="lineNum">      37 </span><span class="lineCov">       1674 :                           entry.value(&quot;MAGNETIC FIELD Y (μT)&quot;, 0.0l),</span>
+<span class="lineNum">      38 </span><span class="lineCov">        837 :                           entry.value(&quot;MAGNETIC FIELD Z (μT)&quot;, 0.0l));</span>
+<span class="lineNum">      39 </span><span class="lineCov">        837 :     myvector_mag.push_back(mag);</span>
+<span class="lineNum">      40 </span>            :   }
+<span class="lineNum">      41 </span><span class="lineCov">          1 :   return myvector_mag;</span>
+<a name="42"><span class="lineNum">      42 </span>            : }</a>
+<span class="lineNum">      43 </span>            : 
+<span class="lineNum">      44 </span><span class="lineCov">          1 : vector&lt;double&gt; roll(vector&lt;sensor*&gt; new_acc_vector) {</span>
+<span class="lineNum">      45 </span>            :   /**Calculating roll*/
+<span class="lineNum">      46 </span><span class="lineCov">          1 :   vector&lt;double&gt; roll_v;</span>
+<span class="lineNum">      47 </span>            : 
+<span class="lineNum">      48 </span><span class="lineCov">        838 :   for (auto iter : new_acc_vector) {</span>
+<span class="lineNum">      49 </span><span class="lineCov">        837 :     double tx = iter-&gt;get_value(&quot;x&quot;);</span>
+<span class="lineNum">      50 </span><span class="lineCov">        837 :     double ty = iter-&gt;get_value(&quot;y&quot;);</span>
+<span class="lineNum">      51 </span><span class="lineCov">        837 :     double tz = iter-&gt;get_value(&quot;z&quot;);</span>
+<span class="lineNum">      52 </span><span class="lineCov">        837 :     auto roll = (atan2(-tx, (sqrt((ty * ty) + (tz * tz))))) * 57.6;</span>
+<span class="lineNum">      53 </span><span class="lineCov">        837 :     roll_v.push_back(roll);</span>
+<span class="lineNum">      54 </span>            :   }
+<span class="lineNum">      55 </span><span class="lineCov">          1 :   return roll_v;</span>
+<a name="56"><span class="lineNum">      56 </span>            : }</a>
+<span class="lineNum">      57 </span>            : 
+<span class="lineNum">      58 </span><span class="lineCov">          1 : vector&lt;double&gt; pitch(vector&lt;sensor*&gt; new_acc_vector) {</span>
+<span class="lineNum">      59 </span>            :   /**Calculating pitch*/
+<span class="lineNum">      60 </span><span class="lineCov">          1 :   vector&lt;double&gt; pitch_v;</span>
+<span class="lineNum">      61 </span><span class="lineCov">        838 :   for (auto iter : new_acc_vector) {</span>
+<span class="lineNum">      62 </span><span class="lineCov">        837 :     double tx = iter-&gt;get_value(&quot;x&quot;);</span>
+<span class="lineNum">      63 </span><span class="lineCov">        837 :     double ty = iter-&gt;get_value(&quot;y&quot;);</span>
+<span class="lineNum">      64 </span><span class="lineCov">        837 :     double tz = iter-&gt;get_value(&quot;z&quot;);</span>
+<span class="lineNum">      65 </span><span class="lineCov">        837 :     auto pitch = (atan2(ty, (sqrt((tx * tx) + (tz * tz))))) * 57.6;</span>
+<span class="lineNum">      66 </span><span class="lineCov">        837 :     pitch_v.push_back(pitch);</span>
+<span class="lineNum">      67 </span>            :   }
+<span class="lineNum">      68 </span><span class="lineCov">          1 :   return pitch_v;</span>
+<a name="69"><span class="lineNum">      69 </span>            : }</a>
+<span class="lineNum">      70 </span>            : 
+<span class="lineNum">      71 </span><span class="lineCov">          3 : vector&lt;double&gt; magnet(vector&lt;sensor*&gt; new_mag_vector, string s) {</span>
+<span class="lineNum">      72 </span><span class="lineCov">          3 :   vector&lt;double&gt; mag;</span>
+<span class="lineNum">      73 </span><span class="lineCov">       2514 :   for (auto iter : new_mag_vector) {</span>
+<span class="lineNum">      74 </span><span class="lineCov">       2511 :     double m = iter-&gt;get_value(s);</span>
+<span class="lineNum">      75 </span><span class="lineCov">       2511 :     mag.push_back(m);</span>
+<span class="lineNum">      76 </span>            :   }
+<span class="lineNum">      77 </span>            : 
+<span class="lineNum">      78 </span><span class="lineCov">          3 :   return mag;</span>
+<a name="79"><span class="lineNum">      79 </span>            : }</a>
+<span class="lineNum">      80 </span>            : 
+<span class="lineNum">      81 </span><span class="lineCov">          1 : vector&lt;double&gt; yaw(vector&lt;std::vector&lt;double&gt;&gt; r_p_y) {</span>
+<span class="lineNum">      82 </span>            :   /**Calculating yaw*/
+<span class="lineNum">      83 </span><span class="lineCov">          1 :   vector&lt;double&gt; yaw_v;</span>
+<span class="lineNum">      84 </span><span class="lineCov">        838 :   for (auto i = 0; i &lt; r_p_y[0].size(); ++i) {</span>
+<span class="lineNum">      85 </span>            :     double Yh =
+<span class="lineNum">      86 </span><span class="lineCov">        837 :         (r_p_y[3][i] * cos(r_p_y[0][i])) - (r_p_y[4][i] * sin(r_p_y[0][i]));</span>
+<span class="lineNum">      87 </span>            : 
+<span class="lineNum">      88 </span><span class="lineCov">       1674 :     double Xh = double(r_p_y[2][i] * cos(r_p_y[1][i])) +</span>
+<span class="lineNum">      89 </span><span class="lineCov">        837 :                 double(r_p_y[3][i] * sin(r_p_y[0][i]) * sin(r_p_y[1][i])) +</span>
+<span class="lineNum">      90 </span><span class="lineCov">        837 :                 double(r_p_y[4][i] * cos(r_p_y[0][i]) * sin(r_p_y[1][i]));</span>
+<span class="lineNum">      91 </span>            : 
+<span class="lineNum">      92 </span><span class="lineCov">        837 :     double yaw = (atan2(Yh, Xh)) * 57.6;</span>
+<span class="lineNum">      93 </span>            : 
+<span class="lineNum">      94 </span><span class="lineCov">        837 :     yaw_v.push_back(yaw);</span>
+<span class="lineNum">      95 </span>            :   }
+<span class="lineNum">      96 </span><span class="lineCov">          1 :   return yaw_v;</span>
+<a name="97"><span class="lineNum">      97 </span>            : }</a>
+<span class="lineNum">      98 </span>            : 
+<span class="lineNum">      99 </span><span class="lineCov">          1 : vector&lt;sensor*&gt; lights(json j_com) {</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 :   vector&lt;sensor*&gt; myvector_light;</span>
+<span class="lineNum">     101 </span><span class="lineCov">        838 :   for (auto entry : j_com) {</span>
+<span class="lineNum">     102 </span><span class="lineCov">        837 :     sensor* lit = new light(entry.value(&quot;LIGHT (lux)&quot;, 0.0));</span>
+<span class="lineNum">     103 </span><span class="lineCov">        837 :     myvector_light.push_back(lit);</span>
+<span class="lineNum">     104 </span>            :   }
+<a name="105"><span class="lineNum">     105 </span><span class="lineCov">          1 :   return myvector_light;</span></a>
+<span class="lineNum">     106 </span>            : }
+<span class="lineNum">     107 </span><span class="lineCov">          1 : int no_of_street_lights(vector&lt;sensor*&gt; new_light_vector) {</span>
+<span class="lineNum">     108 </span>            :   /**Calculating NO. OF STREET LIGHTS*/
+<span class="lineNum">     109 </span><span class="lineCov">          1 :   int number1 = 0;</span>
+<span class="lineNum">     110 </span><span class="lineCov">        838 :   for (auto iter : new_light_vector) {</span>
+<span class="lineNum">     111 </span><span class="lineCov">        837 :     double lv = iter-&gt;get_value1();</span>
+<span class="lineNum">     112 </span><span class="lineCov">        837 :     if (lv &gt; 100) {</span>
+<span class="lineNum">     113 </span><span class="lineCov">        158 :       number1 += 1;</span>
+<span class="lineNum">     114 </span>            :     }
+<span class="lineNum">     115 </span>            :   }
+<span class="lineNum">     116 </span>            : 
+<span class="lineNum">     117 </span><span class="lineCov">          1 :   return int(number1 / 7);</span>
+<a name="118"><span class="lineNum">     118 </span>            : }</a>
+<span class="lineNum">     119 </span>            : 
+<span class="lineNum">     120 </span><span class="lineCov">          1 : vector&lt;sensor*&gt; sounds(json j_com) {</span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 :   vector&lt;sensor*&gt; myvector_sound;</span>
+<span class="lineNum">     122 </span><span class="lineCov">        838 :   for (auto entry : j_com) {</span>
+<span class="lineNum">     123 </span><span class="lineCov">        837 :     sensor* vol = new sound(entry.value(&quot;SOUND LEVEL (dB)&quot;, 0.0l));</span>
+<span class="lineNum">     124 </span><span class="lineCov">        837 :     myvector_sound.push_back(vol);</span>
+<span class="lineNum">     125 </span>            :   }
+<span class="lineNum">     126 </span><span class="lineCov">          1 :   return myvector_sound;</span>
+<a name="127"><span class="lineNum">     127 </span>            : }</a>
+<span class="lineNum">     128 </span>            : 
+<span class="lineNum">     129 </span><span class="lineCov">          1 : double max_volume(vector&lt;sensor*&gt; new_sound_vector) {</span>
+<span class="lineNum">     130 </span>            :   /**Calculating maximum volume*/
+<span class="lineNum">     131 </span><span class="lineCov">          1 :   double Max = -1.0f;</span>
+<span class="lineNum">     132 </span><span class="lineCov">        838 :   for (auto it : new_sound_vector) {</span>
+<span class="lineNum">     133 </span><span class="lineCov">        837 :     if (it-&gt;get_value2() &gt;= Max) Max = it-&gt;get_value2();</span>
+<a name="134"><span class="lineNum">     134 </span>            :   }</a>
+<span class="lineNum">     135 </span><span class="lineCov">          1 :   return Max;</span>
+<span class="lineNum">     136 </span><span class="lineCov">          3 : }</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

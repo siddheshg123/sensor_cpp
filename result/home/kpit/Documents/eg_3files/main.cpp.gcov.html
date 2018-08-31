@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - /home/kpit/Documents/eg_3files/main.cpp</title>
+  <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../index.html">top level</a> - <a href="index.html">home/kpit/Documents/eg_3files</a> - main.cpp<span style="font-size: 80%;"> (source / <a href="main.cpp.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">33</td>
+            <td class="headerCovTableEntry">33</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2018-08-22 05:35:10</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : #include &quot;fun.h&quot;</a>
+<span class="lineNum">       2 </span>            : #include &quot;rpy.h&quot;
+<span class="lineNum">       3 </span>            : 
+<span class="lineNum">       4 </span>            : using json = nlohmann::json;
+<a name="5"><span class="lineNum">       5 </span>            : using namespace std;</a>
+<span class="lineNum">       6 </span>            : 
+<span class="lineNum">       7 </span><span class="lineCov">          1 : int main() {</span>
+<span class="lineNum">       8 </span><span class="lineCov">          2 :   ifstream fin(&quot;simple1.json&quot;); /** Parsing from json file*/</span>
+<span class="lineNum">       9 </span><span class="lineCov">          2 :   json j_com = json::parse(fin);</span>
+<span class="lineNum">      10 </span>            : 
+<span class="lineNum">      11 </span><span class="lineCov">          2 :   vector&lt;sensor*&gt; new_gyro_vector = gyro(j_com);</span>
+<span class="lineNum">      12 </span><span class="lineCov">          2 :   vector&lt;sensor*&gt; new_acc_vector = accele(j_com);</span>
+<span class="lineNum">      13 </span><span class="lineCov">          2 :   vector&lt;sensor*&gt; new_mag_vector = mag(j_com);</span>
+<span class="lineNum">      14 </span><span class="lineCov">          2 :   vector&lt;sensor*&gt; new_light_vector = lights(j_com);</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 :   cout &lt;&lt; &quot;NUMBER OF STREET LIGHTS:&quot;;</span>
+<span class="lineNum">      16 </span><span class="lineCov">          1 :   int No = no_of_street_lights(new_light_vector);</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 :   cout &lt;&lt; No &lt;&lt; endl;</span>
+<span class="lineNum">      18 </span><span class="lineCov">          2 :   vector&lt;sensor*&gt; new_sound_vector = sounds(j_com);</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 :   double maximum_sound = max_volume(new_sound_vector);</span>
+<span class="lineNum">      20 </span><span class="lineCov">          1 :   cout&lt;&lt;&quot;MAXIMUM SOUND INTENSITY:&quot;;</span>
+<span class="lineNum">      21 </span><span class="lineCov">          1 :   cout &lt;&lt; maximum_sound &lt;&lt; endl;</span>
+<span class="lineNum">      22 </span>            : 
+<span class="lineNum">      23 </span><span class="lineCov">          2 :   std::vector&lt;std::vector&lt;double&gt;&gt; r_p_y;</span>
+<span class="lineNum">      24 </span>            : 
+<span class="lineNum">      25 </span><span class="lineCov">          1 :   r_p_y.push_back(roll(new_acc_vector));</span>
+<span class="lineNum">      26 </span><span class="lineCov">          1 :   r_p_y.push_back(pitch(new_acc_vector));</span>
+<span class="lineNum">      27 </span>            : 
+<span class="lineNum">      28 </span><span class="lineCov">          1 :   r_p_y.push_back(magnet(new_mag_vector, &quot;x&quot;));</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 :   r_p_y.push_back(magnet(new_mag_vector, &quot;y&quot;));</span>
+<span class="lineNum">      30 </span><span class="lineCov">          1 :   r_p_y.push_back(magnet(new_mag_vector, &quot;z&quot;));</span>
+<span class="lineNum">      31 </span>            : 
+<span class="lineNum">      32 </span><span class="lineCov">          1 :   r_p_y.push_back(yaw(r_p_y));</span>
+<span class="lineNum">      33 </span>            :   /**Leakage memory released*/
+<span class="lineNum">      34 </span><span class="lineCov">        838 :   for (auto it = new_gyro_vector.begin(); it != new_gyro_vector.end(); it++)</span>
+<span class="lineNum">      35 </span><span class="lineCov">        837 :     delete *it;</span>
+<span class="lineNum">      36 </span><span class="lineCov">        838 :   for (auto it = new_acc_vector.begin(); it != new_acc_vector.end(); it++)</span>
+<span class="lineNum">      37 </span><span class="lineCov">        837 :     delete *it;</span>
+<span class="lineNum">      38 </span><span class="lineCov">        838 :   for (auto it = new_mag_vector.begin(); it != new_mag_vector.end(); it++)</span>
+<span class="lineNum">      39 </span><span class="lineCov">        837 :     delete *it;</span>
+<span class="lineNum">      40 </span><span class="lineCov">        838 :   for (auto it = new_light_vector.begin(); it != new_light_vector.end(); it++)</span>
+<span class="lineNum">      41 </span><span class="lineCov">        837 :     delete *it;</span>
+<span class="lineNum">      42 </span><span class="lineCov">        838 :   for (auto it = new_sound_vector.begin(); it != new_sound_vector.end(); it++)</span>
+<span class="lineNum">      43 </span><span class="lineCov">        837 :     delete *it;</span>
+<a name="44"><span class="lineNum">      44 </span>            : </a>
+<span class="lineNum">      45 </span><span class="lineCov">          1 :   return 0;</span>
+<span class="lineNum">      46 </span><span class="lineCov">          3 : }</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>
